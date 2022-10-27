@@ -1,0 +1,33 @@
+import { css } from '@emotion/react'
+import { SocialIcon } from 'common/Socials'
+import { useProjectConfig } from 'providers/ProjectConfigProvider'
+
+export const MintInfo = () => {
+  const { config } = useProjectConfig()
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="bold text-6xl">{config.displayName}</div>
+      <div className="mb-2 flex items-center gap-4 text-light-0">
+        {config.socialLinks?.map(({ icon, link }, i) => {
+          return (
+            <a
+              key={i}
+              href={link}
+              target="_blank"
+              rel="noreferrer"
+              className={`cursor-pointer text-xl text-light-0 transition-all duration-300 hover:text-primary`}
+              css={css`
+                &:hover {
+                  color: ${config.colors.accent} !important;
+                }
+              `}
+            >
+              <SocialIcon iconKey={icon} />
+            </a>
+          )
+        })}
+      </div>
+      <div className="text-lg text-light-2">{config.description}</div>
+    </div>
+  )
+}
