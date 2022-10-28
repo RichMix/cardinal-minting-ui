@@ -25,7 +25,6 @@ export const getInitialProps = async ({
       ?.split('.')[0]
       ?.replace('dev-', '')
 
-  console.log(project)
   const defaultConfig = projectConfigs['unverified']!
   return {
     cluster: firstParam(cluster),

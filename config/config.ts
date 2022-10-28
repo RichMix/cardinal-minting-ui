@@ -25,10 +25,11 @@ export type ProjectConfig = {
     icon: IconKey
     link: string
   }[]
-  logoImage: string
+  logoImage?: string
   logoPadding?: boolean
   colors: Colors
   badges?: Badge[]
+  mintImages?: string[]
   candyMachineId?: string
 }
 
@@ -60,6 +61,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
       accent: '#e74a27',
       glow: '#e74a27',
     },
+    mintImages: [],
     candyMachineId: '5FHQgZQ4URxE6F1Kousn1EuZpPQdaJHyXgVvmfnyCZxJ',
   },
   unverified: {
@@ -67,7 +69,6 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     displayName: 'Beta Testing',
     description:
       'This is a beta testing collection. Feel free to use at your own risk, these NFTs may or may not be the real verified versions. Visit https://marketplace.cardinal.so and request to add a verified collection.',
-    logoImage: 'logos/default.png',
     hero: 'logos/default-hero.png',
     websiteUrl: 'https://cardinal.so',
     socialLinks: [
