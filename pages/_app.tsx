@@ -4,9 +4,21 @@ import 'tailwindcss/tailwind.css'
 
 import * as amplitude from '@amplitude/analytics-browser'
 import { WalletIdentityProvider } from '@cardinal/namespaces-components'
+import { WalletAdapterNetwork } from '@solana/wallet-adapter-base'
 import { WalletProvider } from '@solana/wallet-adapter-react'
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
-import { getWalletAdapters } from '@solana/wallet-adapter-wallets'
+import {
+  BackpackWalletAdapter,
+  BraveWalletAdapter,
+  CoinbaseWalletAdapter,
+  FractalWalletAdapter,
+  GlowWalletAdapter,
+  LedgerWalletAdapter,
+  PhantomWalletAdapter,
+  SlopeWalletAdapter,
+  SolflareWalletAdapter,
+  TorusWalletAdapter,
+} from '@solana/wallet-adapter-wallets'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ToastContainer } from 'common/Notification'
@@ -19,6 +31,7 @@ import {
   ProjectConfigProvider,
 } from 'providers/ProjectConfigProvider'
 import { UTCNowProvider } from 'providers/UTCNowProvider'
+import { useMemo } from 'react'
 
 require('@solana/wallet-adapter-react-ui/styles.css')
 
@@ -40,10 +53,39 @@ const App = ({
     process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY ??
       '5416da0efc30dc892889733916be497b'
   )
+
+  const network = useMemo(() => {
+    switch (cluster) {
+      case 'mainnet':
+        return WalletAdapterNetwork.Mainnet
+      case 'devnet':
+        return WalletAdapterNetwork.Devnet
+      case 'testnet':
+        return WalletAdapterNetwork.Testnet
+      default:
+        return WalletAdapterNetwork.Mainnet
+    }
+  }, [cluster])
+
+  const wallets = useMemo(
+    () => [
+      new PhantomWalletAdapter(),
+      new BackpackWalletAdapter(),
+      new SolflareWalletAdapter({ network }),
+      new CoinbaseWalletAdapter(),
+      new BraveWalletAdapter(),
+      new SlopeWalletAdapter(),
+      new FractalWalletAdapter(),
+      new GlowWalletAdapter({ network }),
+      new LedgerWalletAdapter(),
+      new TorusWalletAdapter({ params: { network, showTorusButton: false } }),
+    ],
+    [network]
+  )
   return (
     <EnvironmentProvider defaultCluster={cluster}>
       <UTCNowProvider>
-        <WalletProvider wallets={getWalletAdapters()} autoConnect>
+        <WalletProvider wallets={wallets} autoConnect>
           <WalletIdentityProvider>
             <ProjectConfigProvider defaultConfig={config}>
               <QueryClientProvider client={queryClient}>

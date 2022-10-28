@@ -39,6 +39,7 @@ export const useHandleMint = () => {
     ['useHandleMint'],
     async (): Promise<string> => {
       if (!candyMachineId) throw 'No candy machine id found'
+      if (!wallet.publicKey) throw 'Wallet not connected'
       const nftToMintKeypair = Keypair.generate()
       const payerId = wallet.publicKey
       const tokenAccountToReceive = await findAta(
@@ -164,7 +165,8 @@ export const useHandleMint = () => {
     {
       onError: (e) => {
         notify({
-          message: `Something went wrong with buying the token: ${e}`,
+          message: `Something went wrong with buying the token`,
+          description: `${e}`,
           type: 'error',
         })
       },
