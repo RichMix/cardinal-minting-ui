@@ -18,13 +18,14 @@ export const getInitialProps = async ({
     : ctx.query.cluster || process.env.BASE_CLUSTER
 
   const projectParams =
-    ctx.query.collection || ctx.req?.headers.host || ctx.query.host
+    ctx.query.config || ctx.req?.headers.host || ctx.query.host
   const project =
     projectParams &&
     (typeof projectParams === 'string' ? projectParams : projectParams[0])
       ?.split('.')[0]
       ?.replace('dev-', '')
 
+  console.log(project)
   const defaultConfig = projectConfigs['unverified']!
   return {
     cluster: firstParam(cluster),

@@ -6,7 +6,10 @@ export const MintInfo = () => {
   const { config } = useProjectConfig()
   return (
     <div className="flex flex-col gap-6">
-      <div className="bold text-6xl">{config.displayName}</div>
+      <div className="flex items-center gap-6">
+        <img className="w-10" src={config.logoImage} alt={config.displayName} />
+        <div className="bold text-6xl">{config.displayName}</div>
+      </div>
       <div className="mb-2 flex items-center gap-4 text-light-0">
         {config.socialLinks?.map(({ icon, link }, i) => {
           return (

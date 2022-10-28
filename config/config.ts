@@ -35,6 +35,33 @@ export type ProjectConfig = {
 export const LISTING_AUTHORITY_NAME = 'global'
 
 export const projectConfigs: { [key: string]: ProjectConfig } = {
+  brave: {
+    name: 'brave',
+    displayName: 'Brave Test',
+    description:
+      'This is a beta testing collection. Feel free to use at your own risk, these NFTs may or may not be the real verified versions.',
+    logoImage: 'logos/brave-logo.png',
+    websiteUrl: 'https://cardinal.so',
+    socialLinks: [
+      {
+        icon: 'web',
+        link: 'https://solanamonkey.business/',
+      },
+      {
+        icon: 'twitter',
+        link: 'https://twitter.com/SolanaMBS',
+      },
+      {
+        icon: 'discord',
+        link: 'https://discord.com/invite/solanamonkeybusiness',
+      },
+    ],
+    colors: {
+      accent: '#e74a27',
+      glow: '#e74a27',
+    },
+    candyMachineId: '5FHQgZQ4URxE6F1Kousn1EuZpPQdaJHyXgVvmfnyCZxJ',
+  },
   unverified: {
     name: 'unverified',
     displayName: 'Beta Testing',

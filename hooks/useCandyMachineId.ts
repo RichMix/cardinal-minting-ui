@@ -6,7 +6,7 @@ export const useCandyMachineId = () => {
   const { query } = useRouter()
   const { config } = useProjectConfig()
   const tryCandyMachineId =
-    tryPublicKey(query.address) ??
+    tryPublicKey(query.config) ??
     tryPublicKey(config.candyMachineId) ??
     undefined
   return tryCandyMachineId
