@@ -14,7 +14,7 @@ export const MintSupply = () => {
           width: ${pct * 100}%;
         `}
       />
-      <div className="absolute flex h-full w-full items-center justify-center gap-2">
+      <div className="absolute flex h-full w-full items-center justify-center gap-2 text-sm">
         <div>{candyMachineData.data?.itemsRedeemed.toString() ?? 0}</div>
         <div>/</div>
         {candyMachineData.data ? (

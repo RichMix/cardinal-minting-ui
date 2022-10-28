@@ -1,4 +1,5 @@
 import type { IconKey } from 'common/Socials'
+import type React from 'react'
 
 export type Colors = {
   accent: string
@@ -9,6 +10,14 @@ export type Badge = {
   badgeType: 'recent' | 'trending' | 'expiration' | 'wrapped' | 'unwrapped'
   position?: 'top-right' | 'top-left' | 'bottom-left' | 'bottom-right'
   content?: JSX.Element | string
+}
+
+export type Phase = {
+  tooltip?: React.ReactNode
+  title: React.ReactNode
+  subtitle: React.ReactNode
+  description: React.ReactNode
+  goLiveSeconds?: number
 }
 
 export type ProjectConfig = {
@@ -30,6 +39,7 @@ export type ProjectConfig = {
   colors: Colors
   badges?: Badge[]
   mintImages?: string[]
+  phases?: Phase[]
   candyMachineId?: string
 }
 
@@ -41,7 +51,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     displayName: 'Brave Test',
     description:
       'This is a beta testing collection. Feel free to use at your own risk, these NFTs may or may not be the real verified versions.',
-    logoImage: 'logos/brave-logo.png',
+    logoImage: 'brave/brave-logo.png',
     websiteUrl: 'https://cardinal.so',
     socialLinks: [
       {
@@ -61,15 +71,28 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
       accent: '#e74a27',
       glow: '#e74a27',
     },
-    mintImages: [],
+    mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
     candyMachineId: '5FHQgZQ4URxE6F1Kousn1EuZpPQdaJHyXgVvmfnyCZxJ',
+    phases: [
+      {
+        tooltip: 'Mint using BAT token',
+        title: 'Phase I',
+        subtitle: 'BAT Mint',
+        description: '200 BAT',
+      },
+      {
+        title: 'Phase II',
+        subtitle: 'Public SOL Mint',
+        description: '2.5 SOL',
+        goLiveSeconds: 1667082530,
+      },
+    ],
   },
   unverified: {
     name: 'unverified',
     displayName: 'Beta Testing',
     description:
       'This is a beta testing collection. Feel free to use at your own risk, these NFTs may or may not be the real verified versions. Visit https://marketplace.cardinal.so and request to add a verified collection.',
-    hero: 'logos/default-hero.png',
     websiteUrl: 'https://cardinal.so',
     socialLinks: [
       {

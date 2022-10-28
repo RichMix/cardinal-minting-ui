@@ -30,10 +30,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
   const enterTimeout = useRef<NodeJS.Timeout>()
   const leaveTimeout = useRef<NodeJS.Timeout>()
   const handleMouseEnter = useCallback(() => {
+    if (!title) return
     leaveTimeout.current && clearTimeout(leaveTimeout.current)
     enterTimeout.current = setTimeout(() => setIsOpen(true), enterDelay)
   }, [enterDelay])
   const handleMouseLeave = useCallback(() => {
+    if (!title) return
     enterTimeout.current && clearTimeout(enterTimeout.current)
     leaveTimeout.current = setTimeout(() => setIsOpen(false), leaveDelay)
   }, [leaveDelay])
