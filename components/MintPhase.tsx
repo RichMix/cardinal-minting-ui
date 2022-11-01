@@ -17,6 +17,7 @@ import { useUTCNow } from 'providers/UTCNowProvider'
 import { AiFillCrown } from 'react-icons/ai'
 
 import { GatewayStatus } from './GatewayStatus'
+import { WhitelistTokenStatus } from './WhitelistTokenStatus'
 
 export const MintPhase = ({ phase }: { phase: Phase }) => {
   const { UTCNow } = useUTCNow()
@@ -24,22 +25,30 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
 
   const goLiveSeconds =
     phase.goLiveSeconds ??
-    parseInt(candyMachineData.data?.data.goLiveDate?.toString() || '')
+    (candyMachineData.data?.data.goLiveDate
+      ? parseInt(candyMachineData.data?.data.goLiveDate?.toString() || '')
+      : undefined)
+
   const endSeconds =
     phase.endSeconds ??
-    parseInt(candyMachineData.data?.data.endSettings?.number?.toString() || '')
+    (candyMachineData.data?.data.endSettings
+      ? parseInt(
+          candyMachineData.data?.data.endSettings?.number?.toString() || ''
+        )
+      : undefined)
 
   const paymentAmount =
     phase.payment?.paymentAmount ??
     (candyMachineData.data?.data.price
       ? parseInt(candyMachineData.data.data.price.toString())
       : undefined)
+
   const paymentMint =
     tryPublicKey(phase.payment?.paymentMint) ?? candyMachineData.data?.tokenMint
   return (
     <div
       className={`w-full cursor-pointer rounded-lg border-opacity-50 bg-light-4 bg-opacity-10 px-6 py-4 text-sm ${
-        UTCNow > goLiveSeconds
+        UTCNow > (goLiveSeconds ?? 0)
           ? 'border-2 border-primary'
           : 'border border-border opacity-50'
       }`}
@@ -51,9 +60,9 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
         </div>
         <div className="flex flex-col items-end">
           <div className="text-base font-bold">
-            {UTCNow > endSeconds ? (
+            {endSeconds && UTCNow > endSeconds ? (
               <div className="text-red-500">Ended</div>
-            ) : UTCNow > goLiveSeconds ? (
+            ) : goLiveSeconds && UTCNow > goLiveSeconds ? (
               <div className="flex items-center gap-2">
                 <div className="text-green-500">
                   {endSeconds ? (
@@ -68,11 +77,13 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
                   )}
                 </div>
               </div>
-            ) : (
+            ) : goLiveSeconds ? (
               getExpirationString(goLiveSeconds, UTCNow, {
                 showZeros: true,
                 capitalizeSuffix: false,
               })
+            ) : (
+              <div className="h-[26px] w-16 animate-pulse rounded-lg bg-border" />
             )}
           </div>
           <div className="text-light-2">{phase.description}</div>
@@ -81,6 +92,7 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-2">
           <GatewayStatus />
+          <WhitelistTokenStatus />
           <Tooltip
             tooltip="Royalties are enforced for these tokens. Click here to learn more"
             className="cursor-pointer"

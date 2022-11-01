@@ -46,6 +46,11 @@ export const PAYMENT_MINTS: PaymentMintInfo[] = [
     decimals: 6,
   },
   {
+    mint: 'tttvgrrNcjVZJS33UAcwTNs46pAidgsAgJqGfYGdZtG',
+    symbol: 'TEST',
+    decimals: 7,
+  },
+  {
     mint: 'MLKmUCaj1dpBY881aFsrBwR9RUMoKic8SWT3u1q5Nkj',
     symbol: 'MILK',
     image:

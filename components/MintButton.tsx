@@ -21,7 +21,7 @@ export const MintButton = () => {
     <Tooltip
       className="w-full cursor-pointer"
       tooltip={
-        disabled ? 'Wallet no elligible to mint during phase' : 'Mint 1 token'
+        disabled ? 'Wallet not elligible to mint during phase' : 'Mint 1 token'
       }
     >
       <Button

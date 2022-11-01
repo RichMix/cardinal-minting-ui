@@ -69,11 +69,11 @@ const App = ({
 
   const wallets = useMemo(
     () => [
+      new BraveWalletAdapter(),
       new PhantomWalletAdapter(),
       new BackpackWalletAdapter(),
       new SolflareWalletAdapter({ network }),
       new CoinbaseWalletAdapter(),
-      new BraveWalletAdapter(),
       new SlopeWalletAdapter(),
       new FractalWalletAdapter(),
       new GlowWalletAdapter({ network }),

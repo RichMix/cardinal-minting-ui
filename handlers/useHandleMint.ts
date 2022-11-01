@@ -7,6 +7,7 @@ import {
   PROGRAM_ID,
   remainingAccountsForLockup,
   remainingAccountsForPermissioned,
+  WhitelistMintMode,
 } from '@cardinal/mpl-candy-machine-utils'
 import {
   getFeatureAccountAddress,
@@ -124,6 +125,32 @@ export const useHandleMint = () => {
             pubkey: featureAddress,
             isWritable: false,
             isSigner: false,
+          })
+        }
+      }
+
+      // whitelist token
+      if (candyMachine.data.whitelistMintSettings) {
+        const mint = new PublicKey(candyMachine.data.whitelistMintSettings.mint)
+        const whitelistToken = await findAta(mint, wallet.publicKey)
+        remainingAccounts.push({
+          pubkey: whitelistToken,
+          isWritable: true,
+          isSigner: false,
+        })
+        if (
+          candyMachine.data.whitelistMintSettings.mode ===
+          WhitelistMintMode.BurnEveryTime
+        ) {
+          remainingAccounts.push({
+            pubkey: mint,
+            isWritable: true,
+            isSigner: false,
+          })
+          remainingAccounts.push({
+            pubkey: wallet.publicKey,
+            isWritable: false,
+            isSigner: true,
           })
         }
       }

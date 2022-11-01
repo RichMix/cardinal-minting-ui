@@ -13,7 +13,11 @@ export const useGatewayToken = () => {
   const walletId = useWalletId()
   const { connection } = useEnvironmentCtx()
   return useQuery(
-    ['useGatewayToken', candyMachineData.data?.wallet.toString()],
+    [
+      'useGatewayToken',
+      candyMachineData.data?.wallet.toString(),
+      walletId?.toString(),
+    ],
     async () => {
       if (!candyMachineData.data?.data.gatekeeper?.gatekeeperNetwork) {
         throw 'No gatekeeper'
