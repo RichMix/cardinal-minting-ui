@@ -91,7 +91,7 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
       </div>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-2">
-          <GatewayStatus />
+          <GatewayStatus phase={phase} />
           <WhitelistTokenStatus />
           <Tooltip
             tooltip="Royalties are enforced for these tokens. Click here to learn more"

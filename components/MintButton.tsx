@@ -11,7 +11,9 @@ export const MintButton = () => {
   const { config } = useProjectConfig()
   const walletId = useWalletId()
   const candyMachineData = useCandyMachineData()
-  const gatewayToken = useGatewayToken()
+  const gatewayToken = useGatewayToken(
+    candyMachineData.data?.data.gatekeeper?.gatekeeperNetwork
+  )
   const disabled =
     !candyMachineData.data ||
     !walletId ||

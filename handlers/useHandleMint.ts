@@ -235,11 +235,11 @@ export const useHandleMint = () => {
           ],
         },
       ]
-      const tx = new Transaction()
+      let tx = new Transaction()
       tx.instructions = instructions
       tx.feePayer = payerId
       tx.recentBlockhash = (await connection.getRecentBlockhash()).blockhash
-      await wallet.signTransaction(tx)
+      tx = await wallet.signTransaction(tx)
       await tx.partialSign(nftToMintKeypair)
       const txid = await sendAndConfirmRawTransaction(
         connection,

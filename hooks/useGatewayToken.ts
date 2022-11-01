@@ -2,38 +2,33 @@ import {
   GatewayTokenData,
   getGatewayTokenAddressForOwnerAndGatekeeperNetwork,
 } from '@identity.com/solana-gateway-ts'
+import type { PublicKey } from '@solana/web3.js'
 import { useQuery } from '@tanstack/react-query'
 import { useEnvironmentCtx } from 'providers/EnvironmentProvider'
 
-import { useCandyMachineData } from './useCandyMachineData'
 import { useWalletId } from './useWalletId'
 
-export const useGatewayToken = () => {
-  const candyMachineData = useCandyMachineData()
+export const useGatewayToken = (gatekeeperNetwork: PublicKey | undefined) => {
   const walletId = useWalletId()
   const { connection } = useEnvironmentCtx()
   return useQuery(
-    [
-      'useGatewayToken',
-      candyMachineData.data?.wallet.toString(),
-      walletId?.toString(),
-    ],
+    ['useGatewayToken', gatekeeperNetwork?.toString(), walletId?.toString()],
     async () => {
-      if (!candyMachineData.data?.data.gatekeeper?.gatekeeperNetwork) {
+      if (!gatekeeperNetwork) {
         throw 'No gatekeeper'
       }
       if (!walletId) throw 'No wallet found'
       const gatewayTokenKey =
         getGatewayTokenAddressForOwnerAndGatekeeperNetwork(
           walletId,
-          candyMachineData.data?.data.gatekeeper?.gatekeeperNetwork
+          gatekeeperNetwork
         )
       const gatewayTokenData = await connection.getAccountInfo(gatewayTokenKey)
       if (!gatewayTokenData?.data) return null
       return GatewayTokenData.fromAccount(gatewayTokenData?.data)
     },
     {
-      enabled: !!walletId && !!candyMachineData.data?.data.gatekeeper,
+      enabled: !!walletId && !!gatekeeperNetwork,
     }
   )
 }

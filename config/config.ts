@@ -17,6 +17,10 @@ export type Phase = {
   title: React.ReactNode
   subtitle: React.ReactNode
   description: React.ReactNode
+  allowlist?: {
+    gatekeeperNetwork: string
+    expireOnUse?: boolean
+  }
   payment?: {
     paymentMint?: string
     paymentAmount: number
@@ -77,36 +81,45 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
       glow: '#e74a27',
     },
     mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
-    candyMachineId: 'Cdx5bmrwdYicFHVAgS5hXFmvhtCvLSXkZwzniuDC52dW',
+    candyMachineId: '2eZQbR88qgqpn6boQFPRur82wqM8mAZFjKzhAUGpPR9U',
     phases: [
       {
         tooltip: 'Mint using BAT token',
         title: 'Phase I',
         subtitle: 'Whitelist BAT Mint',
         description: '',
+        allowlist: {
+          gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
+          expireOnUse: true,
+        },
         payment: {
           paymentMint: 'EPeUFDgHRxs9xxEPVaL6kfGQvCon7jmAWKVUHuux1Tpz',
           paymentAmount: 20000000000,
         },
-        goLiveSeconds: 1667200273 - 60 * 40,
-        endSeconds: 1667200273,
+        goLiveSeconds: 1667281354,
+        endSeconds: 1667281354 + 60 * 60,
       },
       {
         title: 'Phase II',
         subtitle: 'Whitelist SOL Mint',
         description: '',
-        payment: {
-          paymentAmount: 1500000000,
+        allowlist: {
+          gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
+          expireOnUse: true,
         },
-        endSeconds: 1667200273 + 60 * 50,
+        payment: {
+          paymentAmount: 100000000,
+        },
+        goLiveSeconds: 1667281354 + 60 * 60,
+        endSeconds: 1667281354 + 60 * 120,
       },
       {
         title: 'Phase III',
         subtitle: 'Public SOL Mint',
         description: '',
-        goLiveSeconds: 1667200273 + 60 * 50,
+        goLiveSeconds: 1667281354 + 60 * 60,
         payment: {
-          paymentAmount: 2000000000,
+          paymentAmount: 150000000,
         },
       },
     ],

@@ -1,12 +1,17 @@
+import { tryPublicKey } from '@cardinal/common'
 import { Tooltip } from 'common/Tooltip'
+import type { Phase } from 'config/config'
 import { useCandyMachineData } from 'hooks/useCandyMachineData'
 import { isValid, useGatewayToken } from 'hooks/useGatewayToken'
 import { AiOutlineCheck, AiOutlineClose, AiOutlineLock } from 'react-icons/ai'
 
-export const GatewayStatus = () => {
+export const GatewayStatus = ({ phase }: { phase: Phase }) => {
   const candyMachineData = useCandyMachineData()
-  const gatewayToken = useGatewayToken()
-  if (!candyMachineData.data?.data.gatekeeper) return <></>
+  const gatekeeperNetwork =
+    tryPublicKey(phase.allowlist?.gatekeeperNetwork) ??
+    candyMachineData.data?.data.gatekeeper?.gatekeeperNetwork
+  const gatewayToken = useGatewayToken(gatekeeperNetwork)
+  if (!gatekeeperNetwork) return <></>
   return (
     <div className="flex">
       {!gatewayToken.isFetched ? (
