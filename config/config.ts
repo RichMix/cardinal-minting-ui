@@ -17,7 +17,12 @@ export type Phase = {
   title: React.ReactNode
   subtitle: React.ReactNode
   description: React.ReactNode
+  payment?: {
+    paymentMint?: string
+    paymentAmount: number
+  }
   goLiveSeconds?: number
+  endSeconds?: number
 }
 
 export type ProjectConfig = {
@@ -72,19 +77,37 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
       glow: '#e74a27',
     },
     mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
-    candyMachineId: '5FHQgZQ4URxE6F1Kousn1EuZpPQdaJHyXgVvmfnyCZxJ',
+    candyMachineId: 'Cdx5bmrwdYicFHVAgS5hXFmvhtCvLSXkZwzniuDC52dW',
     phases: [
       {
         tooltip: 'Mint using BAT token',
         title: 'Phase I',
-        subtitle: 'BAT Mint',
-        description: '200 BAT',
+        subtitle: 'Whitelist BAT Mint',
+        description: '',
+        payment: {
+          paymentMint: 'EPeUFDgHRxs9xxEPVaL6kfGQvCon7jmAWKVUHuux1Tpz',
+          paymentAmount: 20000000000,
+        },
+        goLiveSeconds: 1667200273 - 60 * 40,
+        endSeconds: 1667200273,
       },
       {
         title: 'Phase II',
+        subtitle: 'Whitelist SOL Mint',
+        description: '',
+        payment: {
+          paymentAmount: 1500000000,
+        },
+        endSeconds: 1667200273 + 60 * 50,
+      },
+      {
+        title: 'Phase III',
         subtitle: 'Public SOL Mint',
-        description: '2.5 SOL',
-        goLiveSeconds: 1667082530,
+        description: '',
+        goLiveSeconds: 1667200273 + 60 * 50,
+        payment: {
+          paymentAmount: 2000000000,
+        },
       },
     ],
   },

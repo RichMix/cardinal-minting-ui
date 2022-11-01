@@ -25,7 +25,7 @@ export const MintPreview = () => {
     })
   }, [UTCNow])
   return (
-    <div className="aspect-square h-full w-full">
+    <div className="aspect-square w-full">
       {candyMachineData.data ? (
         <img src={imageUrl} alt="Mint preview" className="rounded-lg" />
       ) : (

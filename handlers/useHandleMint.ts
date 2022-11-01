@@ -3,9 +3,18 @@ import {
   CandyMachine,
   createMintNftInstruction,
   findLockupSettingsId,
+  findPermissionedSettingsId,
   PROGRAM_ID,
   remainingAccountsForLockup,
+  remainingAccountsForPermissioned,
 } from '@cardinal/mpl-candy-machine-utils'
+import {
+  getFeatureAccountAddress,
+  getGatewayTokenAddressForOwnerAndGatekeeperNetwork,
+  NetworkFeature,
+  PROGRAM_ID as GATEKEEPER_PROGRAM,
+  UserTokenExpiry,
+} from '@identity.com/solana-gateway-ts'
 import {
   Edition,
   Metadata,
@@ -83,6 +92,42 @@ export const useHandleMint = () => {
       )
       const remainingAccounts: AccountMeta[] = []
 
+      // Gatekeeper
+      if (candyMachine.data.gatekeeper) {
+        console.log(`> Add gatekeeper accounts`)
+        const gatewayTokenKey =
+          getGatewayTokenAddressForOwnerAndGatekeeperNetwork(
+            wallet.publicKey,
+            candyMachine.data.gatekeeper.gatekeeperNetwork
+          )
+        console.log(gatewayTokenKey.toString())
+        remainingAccounts.push({
+          pubkey: gatewayTokenKey,
+          isWritable: true,
+          isSigner: false,
+        })
+
+        if (candyMachine.data.gatekeeper.expireOnUse) {
+          console.log(`> Add gatekeeper expiration accounts`)
+          remainingAccounts.push({
+            pubkey: GATEKEEPER_PROGRAM,
+            isWritable: false,
+            isSigner: false,
+          })
+          const featureAddress = getFeatureAccountAddress(
+            new NetworkFeature({
+              userTokenExpiry: new UserTokenExpiry({}),
+            }),
+            candyMachine.data.gatekeeper.gatekeeperNetwork
+          )
+          remainingAccounts.push({
+            pubkey: featureAddress,
+            isWritable: false,
+            isSigner: false,
+          })
+        }
+      }
+
       // Payment
       if (candyMachine.tokenMint) {
         console.log(`> Add payment accounts`)
@@ -127,6 +172,24 @@ export const useHandleMint = () => {
         )
       }
 
+      // Permissioned settings
+      const [permissionedSettingsId] = await findPermissionedSettingsId(
+        candyMachineId
+      )
+      const permissionedSettings = await connection.getAccountInfo(
+        permissionedSettingsId
+      )
+      if (permissionedSettings) {
+        console.log(`> Adding permissioned settings accounts`)
+        remainingAccounts.push(
+          ...(await remainingAccountsForPermissioned(
+            candyMachineId,
+            nftToMintKeypair.publicKey,
+            tokenAccountToReceive
+          ))
+        )
+      }
+
       const instructions = [
         ComputeBudgetProgram.requestUnits({
           units: 400000,
@@ -163,10 +226,11 @@ export const useHandleMint = () => {
       return txid
     },
     {
-      onError: (e) => {
+      onError: (e: any) => {
+        console.log(e, 'logs' in e ? e.logs : [])
         notify({
-          message: `Something went wrong with buying the token`,
-          description: `${e}`,
+          message: `Something went wrong with buying the token. Please try again`,
+          // description: `${e}`,
           type: 'error',
         })
       },

@@ -2,16 +2,17 @@ import type * as PopperJS from '@popperjs/core'
 import React, { useCallback, useRef, useState } from 'react'
 import { usePopper } from 'react-popper'
 
-type TooltipProps = {
-  title: React.ReactNode
+interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
+  tooltip: React.ReactNode
   placement?: PopperJS.Placement
   enterDelay?: number
   leaveDelay?: number
-} & React.HTMLAttributes<HTMLDivElement>
+}
 
 export const Tooltip: React.FC<TooltipProps> = ({
   children,
-  title,
+  tooltip,
+  className,
   enterDelay = 250,
   leaveDelay = 150,
   placement = 'bottom',
@@ -30,23 +31,23 @@ export const Tooltip: React.FC<TooltipProps> = ({
   const enterTimeout = useRef<NodeJS.Timeout>()
   const leaveTimeout = useRef<NodeJS.Timeout>()
   const handleMouseEnter = useCallback(() => {
-    if (!title) return
+    if (!tooltip) return
     leaveTimeout.current && clearTimeout(leaveTimeout.current)
     enterTimeout.current = setTimeout(() => setIsOpen(true), enterDelay)
   }, [enterDelay])
   const handleMouseLeave = useCallback(() => {
-    if (!title) return
+    if (!tooltip) return
     enterTimeout.current && clearTimeout(enterTimeout.current)
     leaveTimeout.current = setTimeout(() => setIsOpen(false), leaveDelay)
   }, [leaveDelay])
 
   return (
-    <div>
+    <div className={`${className}`}>
       <div
         ref={setReferenceElement}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative"
+        className={`relative ${className}`}
       >
         {children}
       </div>
@@ -61,7 +62,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
             : 'pointer-events-none scale-50 opacity-0'
         }`}
       >
-        {title}
+        {tooltip}
       </div>
     </div>
   )
