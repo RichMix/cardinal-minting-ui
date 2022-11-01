@@ -1,23 +1,56 @@
+import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
 import { useQuery } from 'react-query'
 
-type StatKey = 'total-mints' | 'total-tokens-vested' | 'total-wallets'
+type StatKey = 'total-mints' | 'total-tokens' | 'total-wallets'
 export const statsNames: StatKey[] = [
   'total-mints',
-  'total-tokens-vested',
+  'total-tokens',
   'total-wallets',
 ]
 
 export const useGlobalStats = () => {
+  const index = new ApolloClient({
+    uri: 'https://welcome-elk-85.hasura.app/v1/graphql',
+    cache: new InMemoryCache({ resultCaching: false }),
+  })
+
   return useQuery<
     | {
         [n: string]: { data: number }
       }
     | undefined
-  >(['useGlobalStats'], () => {
+  >(['useGlobalStats'], async () => {
+    const queryResult = await index.query({
+      query: gql`
+        query GetTokenManagers {
+          q1: acc_176_aggregate(where: { kind: { _eq: "4" } }) {
+            aggregate {
+              count
+            }
+          }
+          q2: acc_176_aggregate(
+            where: { kind: { _eq: "4" } }
+            distinct_on: recipientTokenAccount
+            order_by: { recipientTokenAccount: desc }
+          ) {
+            aggregate {
+              count(distinct: true)
+            }
+          }
+        }
+      `,
+    })
+    const tokenManagers = queryResult.data as {
+      q1?: { aggregate?: { count?: number } }
+      q2?: { aggregate?: { count?: number } }
+    }
+    console.log(queryResult, tokenManagers)
     return {
-      'total-mints': { data: 1 },
-      'total-tokens-vested': { data: 3400 },
-      'total-wallets': { data: 40 },
+      'total-mints': { data: 4 },
+      'total-tokens': {
+        data: tokenManagers.q1?.aggregate?.count ?? 0,
+      },
+      'total-wallets': { data: tokenManagers.q2?.aggregate?.count ?? 0 },
     }
   })
 }
@@ -25,14 +58,14 @@ export const useGlobalStats = () => {
 export const statsNameMapping: { key: StatKey; displayName: string }[] = [
   {
     key: 'total-mints',
-    displayName: 'Total Mints Vested',
+    displayName: 'Total Mints',
   },
   {
-    key: 'total-tokens-vested',
-    displayName: 'Total Tokens Vested',
+    key: 'total-tokens',
+    displayName: 'Total Tokens',
   },
   {
     key: 'total-wallets',
-    displayName: 'Total Wallets',
+    displayName: 'Unique Wallets',
   },
 ]

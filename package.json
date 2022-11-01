@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@amplitude/analytics-browser": "^1.5.4",
-    "@apollo/client": "^3.7.0",
+    "@apollo/client": "^3.7.1",
     "@cardinal/common": "^2.0.1",
     "@cardinal/mpl-candy-machine-utils": "^4.4.3",
     "@cardinal/namespaces": "^4.1.56",
