@@ -81,7 +81,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
       glow: '#e74a27',
     },
     mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
-    candyMachineId: 'BYzeYYHHuLYebZNbbWpdJwf49AGbFSFFBNKfjpjfvs6P',
+    candyMachineId: '8P1UPnxU1rPKTmMEbneQ2VQW99uLPxboP3QWkgQfuagV',
     phases: [
       {
         tooltip: 'Mint using BAT token',
