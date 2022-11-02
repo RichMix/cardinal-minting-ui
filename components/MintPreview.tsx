@@ -42,7 +42,7 @@ export const MintPreview = () => {
             (mintImages ? mintImages[0] : 'https://picsum.photos/600/600')
           }
           alt="Mint preview"
-          className="rounded-lg"
+          className="w-full rounded-lg"
         />
       ) : (
         <div className="aspect-square animate-pulse rounded-lg bg-border"></div>

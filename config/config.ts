@@ -124,6 +124,32 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
       },
     ],
   },
+  'test-0': {
+    name: 'test-0',
+    displayName: 'Test 0',
+    description:
+      'This is a test 0 collection. Feel free to use at your own risk, these NFTs may or may not be the real verified versions. Visit https://marketplace.cardinal.so and request to add a verified collection.',
+    websiteUrl: 'https://cardinal.so',
+    socialLinks: [
+      {
+        icon: 'web',
+        link: 'https://google.com/',
+      },
+      {
+        icon: 'twitter',
+        link: 'https://google.com',
+      },
+      {
+        icon: 'discord',
+        link: 'https://google.com',
+      },
+    ],
+    colors: {
+      accent: '#278ace',
+      glow: '#278ace',
+    },
+    candyMachineId: '7oUA5rq31mm2tC5sJMLY3CLSMunVokqmePPj9VBJR5HM',
+  },
   unverified: {
     name: 'unverified',
     displayName: 'Beta Testing',
