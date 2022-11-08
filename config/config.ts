@@ -58,22 +58,18 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
   brave: {
     name: 'brave',
     displayName: 'Brave Test',
-    description:
-      'This is a beta testing collection. Feel free to use at your own risk, these NFTs may or may not be the real verified versions.',
+    description: `Basic Attention Token (BAT) has joined forces with Adam Ape, a renowned multidisciplinary artist in Web3 and the traditional graphic design and digital animation space, on its 2500-piece genesis Solana NFT collection: BAT x Adam Ape for Brave.
+Together, they created four PFP-style NFTs modeled after Brave’s logo. Each of the four NFTs—The Curious, The Dabbler, The Degen, and The Sage—is dynamically animated with facial expressions and sound effects and represents one of four stages of immersion in Web3.`,
     logoImage: 'brave/brave-logo.png',
     websiteUrl: 'https://cardinal.so',
     socialLinks: [
       {
         icon: 'web',
-        link: 'https://solanamonkey.business/',
+        link: 'https://brave.com/',
       },
       {
         icon: 'twitter',
-        link: 'https://twitter.com/SolanaMBS',
-      },
-      {
-        icon: 'discord',
-        link: 'https://discord.com/invite/solanamonkeybusiness',
+        link: 'https://brave.com/',
       },
     ],
     colors: {
@@ -84,8 +80,24 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     candyMachineId: '8P1UPnxU1rPKTmMEbneQ2VQW99uLPxboP3QWkgQfuagV',
     phases: [
       {
-        tooltip: 'Mint using BAT token',
+        tooltip: 'Must hold an Adam Ape NFT',
         title: 'Phase I',
+        subtitle: 'Adam Ape NFT holdrs',
+        description: '',
+        allowlist: {
+          gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
+          expireOnUse: true,
+        },
+        payment: {
+          paymentMint: 'EPeUFDgHRxs9xxEPVaL6kfGQvCon7jmAWKVUHuux1Tpz',
+          paymentAmount: 20000000000,
+        },
+        goLiveSeconds: 1667281354,
+        endSeconds: 1667281354 + 60 * 60,
+      },
+      {
+        tooltip: 'Mint using BAT token',
+        title: 'Phase II',
         subtitle: 'Whitelist BAT Mint',
         description: '',
         allowlist: {
@@ -100,7 +112,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
         endSeconds: 1667281354 + 60 * 60,
       },
       {
-        title: 'Phase II',
+        title: 'Phase III',
         subtitle: 'Whitelist SOL Mint',
         description: '',
         allowlist: {
@@ -114,7 +126,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
         endSeconds: 1667281354 + 60 * 120,
       },
       {
-        title: 'Phase III',
+        title: 'Phase IV',
         subtitle: 'Public SOL Mint',
         description: '',
         goLiveSeconds: 1667281354 + 60 * 60,
@@ -128,7 +140,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     name: 'test-0',
     displayName: 'Test 0',
     description:
-      'This is a test 0 collection. Feel free to use at your own risk, these NFTs may or may not be the real verified versions. Visit https://marketplace.cardinal.so and request to add a verified collection.',
+      'Basic Attention Token (BAT) has joined forces with Adam Ape, a renowned multidisciplinary artist in Web3 and the traditional graphic design and digital animation space, on its 2500-piece genesis Solana NFT collection: BAT x Adam Ape for Brave.',
     websiteUrl: 'https://cardinal.so',
     socialLinks: [
       {
@@ -154,7 +166,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     name: 'unverified',
     displayName: 'Beta Testing',
     description:
-      'This is a beta testing collection. Feel free to use at your own risk, these NFTs may or may not be the real verified versions. Visit https://marketplace.cardinal.so and request to add a verified collection.',
+      'Basic Attention Token (BAT) has joined forces with Adam Ape, a renowned multidisciplinary artist in Web3 and the traditional graphic design and digital animation space, on its 2500-piece genesis Solana NFT collection: BAT x Adam Ape for Brave.',
     websiteUrl: 'https://cardinal.so',
     socialLinks: [
       {
