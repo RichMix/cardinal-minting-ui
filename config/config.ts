@@ -175,8 +175,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
           expireOnUse: true,
         },
         payment: {
-          paymentMint: 'EPeUFDgHRxs9xxEPVaL6kfGQvCon7jmAWKVUHuux1Tpz',
-          paymentAmount: 20000000000,
+          paymentAmount: 3000000000,
         },
         goLiveSeconds: 1668099600,
         endSeconds: 1668099600 + 60 * 30,
@@ -206,7 +205,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
           expireOnUse: true,
         },
         payment: {
-          paymentAmount: 100000000,
+          paymentAmount: 3000000000,
         },
         goLiveSeconds: 1668099600 + 60 * 60,
         endSeconds: 1668099600 + 60 * 120,
@@ -216,7 +215,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
         subtitle: 'Public SOL Mint',
         description: '',
         payment: {
-          paymentAmount: 150000000,
+          paymentAmount: 3000000000,
         },
         goLiveSeconds: 1668099600 + 60 * 120,
       },
