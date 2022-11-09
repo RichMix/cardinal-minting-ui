@@ -1,13 +1,16 @@
 import { Tooltip } from 'common/Tooltip'
 import { useCandyMachineData } from 'hooks/useCandyMachineData'
+import { useWalletId } from 'hooks/useWalletId'
 import { useWhitelistTokenAccount } from 'hooks/useWhitelistTokenAccount'
 import { AiOutlineCheck, AiOutlineLock } from 'react-icons/ai'
 
 export const WhitelistTokenStatus = () => {
   const candyMachineData = useCandyMachineData()
+  const walletId = useWalletId()
   const whitelistTokenAccount = useWhitelistTokenAccount()
   const amount = whitelistTokenAccount.data?.amount.toNumber().toString()
-  if (!candyMachineData.data?.data.whitelistMintSettings) return <></>
+  if (!candyMachineData.data?.data.whitelistMintSettings || !walletId)
+    return <></>
   return (
     <div className="flex">
       {!whitelistTokenAccount.isFetched ? (
