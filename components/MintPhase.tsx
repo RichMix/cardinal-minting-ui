@@ -13,11 +13,16 @@ import {
   mintSymbol,
   WRAPPED_SOL_MINT,
 } from 'hooks/usePaymentMints'
+import { useProjectConfig } from 'providers/ProjectConfigProvider'
 import { useUTCNow } from 'providers/UTCNowProvider'
 import { AiFillCrown } from 'react-icons/ai'
 
+import { GatewayStatus } from './GatewayStatus'
+import { WhitelistTokenStatus } from './WhitelistTokenStatus'
+
 export const MintPhase = ({ phase }: { phase: Phase }) => {
   const { UTCNow } = useUTCNow()
+  const { config } = useProjectConfig()
   const candyMachineData = useCandyMachineData()
 
   const goLiveSeconds =
@@ -88,8 +93,12 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
       </div>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-2">
-          {/* <GatewayStatus phase={phase} />
-          <WhitelistTokenStatus /> */}
+          {config.hideElligibility && (
+            <>
+              <GatewayStatus phase={phase} />
+              <WhitelistTokenStatus />
+            </>
+          )}
           <Tooltip
             tooltip="Royalties are enforced for these tokens. Click here to learn more"
             className="cursor-pointer"

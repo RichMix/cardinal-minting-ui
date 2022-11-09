@@ -22,7 +22,7 @@ export const WhitelistTokenStatus = () => {
           className="cursor-pointer"
         >
           <div className="flex items-center rounded-lg border border-primary bg-primary bg-opacity-20 px-3 py-1 text-xs">
-            <AiOutlineCheck className="mr-1" /> Elligible ({amount})
+            <AiOutlineCheck className="mr-1" /> Remaining ({amount})
           </div>
         </Tooltip>
       ) : (
@@ -31,7 +31,7 @@ export const WhitelistTokenStatus = () => {
           className="cursor-pointer"
         >
           <div className="flex items-center gap-1 rounded-lg border border-red-500 bg-red-500 bg-opacity-20 px-3 py-1 text-xs">
-            <AiOutlineLock /> Inelligible
+            <AiOutlineLock /> Remaining (0)
           </div>
         </Tooltip>
       )}

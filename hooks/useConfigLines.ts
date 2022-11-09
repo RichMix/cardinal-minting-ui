@@ -23,6 +23,8 @@ export const configLineBeet = new beet.FixableBeetArgsStruct(
   'ConfigLine'
 )
 
+const SUPPLY = 2500
+
 export const useConfigLines = () => {
   const candyMachineId = useCandyMachineId()
   const { connection } = useEnvironmentCtx()
@@ -34,10 +36,10 @@ export const useConfigLines = () => {
       const configLineOffset = CONFIG_ARRAY_START + 4
       const configLinesBytes = accountInfo?.data.slice(
         configLineOffset,
-        configLineOffset + CONFIG_LINE_SIZE * 100
+        configLineOffset + CONFIG_LINE_SIZE * SUPPLY
       )
       const configLines: { name: string; uri: string }[] = []
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < SUPPLY; i++) {
         try {
           const configLineBytes = configLinesBytes?.slice(
             i * CONFIG_LINE_SIZE,

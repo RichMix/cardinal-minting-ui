@@ -41,6 +41,7 @@ export const useWhitelistTokenAccount = () => {
     {
       enabled:
         !!walletId && !!candyMachineData.data?.data.whitelistMintSettings,
+      retry: false,
     }
   )
 }
