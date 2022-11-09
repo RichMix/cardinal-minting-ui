@@ -33,10 +33,10 @@ export const MintPage = () => {
         </div>
       </div>
       {config.sponsors && (
-        <div className="flex w-full items-center justify-center justify-around gap-10 p-12">
-          <LogoTitled className="h-10" />
+        <div className="mt-8 flex w-full flex-wrap items-center justify-around gap-10 border-t border-border px-8 py-16">
+          <LogoTitled className="h-8" />
           {config.sponsors.map((s, i) => (
-            <img className="h-20" key={i} src={s} alt={s} />
+            <img className="max-h-10" key={i} src={s} alt={s} />
           ))}
         </div>
       )}
