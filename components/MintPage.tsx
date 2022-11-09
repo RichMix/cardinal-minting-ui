@@ -6,7 +6,7 @@ import { MintInfo } from './MintInfo'
 import { MintPhase } from './MintPhase'
 import { MintPreview } from './MintPreview'
 import { MintSupply } from './MintSupply'
-import { TradeButton } from './TradeButton'
+import { TradeButtons } from './TradeButtons'
 
 export const MintPage = () => {
   const { config } = useProjectConfig()
@@ -29,7 +29,7 @@ export const MintPage = () => {
           <MintPreview />
           <MintSupply />
           <MintButton />
-          <TradeButton />
+          <TradeButtons tradeButtons={config.tradeButtons} />
         </div>
       </div>
       {config.sponsors && (

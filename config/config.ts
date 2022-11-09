@@ -1,4 +1,5 @@
 import type { IconKey } from 'common/Socials'
+import type { TradeButtonOptions } from 'components/TradeButtons'
 import type React from 'react'
 
 export type Colors = {
@@ -43,6 +44,7 @@ export type ProjectConfig = {
     icon: IconKey
     link: string
   }[]
+  tradeButtons?: TradeButtonOptions[]
   logoImage?: string
   logoPadding?: boolean
   colors: Colors
@@ -77,6 +79,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
       glow: '#e74a27',
     },
     sponsors: ['/logos/bat.png', '/logos/brave.png', '/logos/magic-eden.png'],
+    tradeButtons: ['coralcube'],
     mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
     candyMachineId: '8P1UPnxU1rPKTmMEbneQ2VQW99uLPxboP3QWkgQfuagV',
     phases: [
@@ -158,6 +161,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
       glow: '#e74a27',
     },
     sponsors: ['/logos/bat.png', '/logos/brave.png', '/logos/magic-eden.png'],
+    tradeButtons: ['coralcube'],
     mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
     candyMachineId: '8P1UPnxU1rPKTmMEbneQ2VQW99uLPxboP3QWkgQfuagV',
     phases: [
