@@ -46,6 +46,7 @@ export type ProjectConfig = {
   logoImage?: string
   logoPadding?: boolean
   colors: Colors
+  sponsors?: string[]
   badges?: Badge[]
   mintImages?: string[]
   phases?: Phase[]
@@ -59,7 +60,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     name: 'brave',
     displayName: 'BAT x Adam Ape for Brave',
     description: `Basic Attention Token (BAT) has joined forces with Adam Ape, a renowned multidisciplinary artist in Web3 and the traditional graphic design and digital animation space, on its 2500-piece genesis Solana NFT collection: BAT x Adam Ape for Brave.\n\nTogether, they created four PFP-style NFTs modeled after Brave’s logo. Each of the four NFTs—The Curious, The Dabbler, The Degen, and The Sage—is dynamically animated with facial expressions and sound effects and represents one of four stages of immersion in Web3.`,
-    logoImage: 'brave/brave-logo.png',
+    // logoImage: 'brave/brave-logo.png',
     websiteUrl: 'https://cardinal.so',
     socialLinks: [
       {
