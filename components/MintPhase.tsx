@@ -93,7 +93,7 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
       </div>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-2">
-          {config.hideElligibility && (
+          {!config.hideElligibility && (
             <>
               <GatewayStatus phase={phase} />
               <WhitelistTokenStatus />
