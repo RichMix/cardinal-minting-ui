@@ -16,7 +16,7 @@ export const MintInfo = () => {
         )}
         <div className="bold text-6xl">{config.displayName}</div>
       </div>
-      <div className="mb-2 flex items-center gap-4 text-light-0">
+      <div className="flex items-center gap-4 text-light-0">
         {config.socialLinks?.map(({ icon, link }, i) => {
           return (
             <a
@@ -36,7 +36,9 @@ export const MintInfo = () => {
           )
         })}
       </div>
-      <div className="text-lg text-light-2">{config.description}</div>
+      <div className="whitespace-pre-line text-lg text-light-2">
+        {config.description}
+      </div>
     </div>
   )
 }

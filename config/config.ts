@@ -57,9 +57,8 @@ export const LISTING_AUTHORITY_NAME = 'global'
 export const projectConfigs: { [key: string]: ProjectConfig } = {
   brave: {
     name: 'brave',
-    displayName: 'Brave Test',
-    description: `Basic Attention Token (BAT) has joined forces with Adam Ape, a renowned multidisciplinary artist in Web3 and the traditional graphic design and digital animation space, on its 2500-piece genesis Solana NFT collection: BAT x Adam Ape for Brave.
-Together, they created four PFP-style NFTs modeled after Brave’s logo. Each of the four NFTs—The Curious, The Dabbler, The Degen, and The Sage—is dynamically animated with facial expressions and sound effects and represents one of four stages of immersion in Web3.`,
+    displayName: 'BAT x Adam Ape for Brave',
+    description: `Basic Attention Token (BAT) has joined forces with Adam Ape, a renowned multidisciplinary artist in Web3 and the traditional graphic design and digital animation space, on its 2500-piece genesis Solana NFT collection: BAT x Adam Ape for Brave.\n\nTogether, they created four PFP-style NFTs modeled after Brave’s logo. Each of the four NFTs—The Curious, The Dabbler, The Degen, and The Sage—is dynamically animated with facial expressions and sound effects and represents one of four stages of immersion in Web3.`,
     logoImage: 'brave/brave-logo.png',
     websiteUrl: 'https://cardinal.so',
     socialLinks: [
@@ -92,8 +91,8 @@ Together, they created four PFP-style NFTs modeled after Brave’s logo. Each of
           paymentMint: 'EPeUFDgHRxs9xxEPVaL6kfGQvCon7jmAWKVUHuux1Tpz',
           paymentAmount: 20000000000,
         },
-        goLiveSeconds: 1667281354,
-        endSeconds: 1667281354 + 60 * 60,
+        goLiveSeconds: 1668099600,
+        endSeconds: 1668099600 + 60 * 30,
       },
       {
         tooltip: 'Mint using BAT token',
@@ -108,8 +107,8 @@ Together, they created four PFP-style NFTs modeled after Brave’s logo. Each of
           paymentMint: 'EPeUFDgHRxs9xxEPVaL6kfGQvCon7jmAWKVUHuux1Tpz',
           paymentAmount: 20000000000,
         },
-        goLiveSeconds: 1667281354,
-        endSeconds: 1667281354 + 60 * 60,
+        goLiveSeconds: 1668099600 + 60 * 30,
+        endSeconds: 1668099600 + 60 * 60,
       },
       {
         title: 'Phase III',
@@ -122,17 +121,17 @@ Together, they created four PFP-style NFTs modeled after Brave’s logo. Each of
         payment: {
           paymentAmount: 100000000,
         },
-        goLiveSeconds: 1667281354 + 60 * 60,
-        endSeconds: 1667281354 + 60 * 120,
+        goLiveSeconds: 1668099600 + 60 * 60,
+        endSeconds: 1668099600 + 60 * 120,
       },
       {
         title: 'Phase IV',
         subtitle: 'Public SOL Mint',
         description: '',
-        goLiveSeconds: 1667281354 + 60 * 60,
         payment: {
           paymentAmount: 150000000,
         },
+        goLiveSeconds: 1668099600 + 60 * 120,
       },
     ],
   },
