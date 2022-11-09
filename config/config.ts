@@ -88,7 +88,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
       {
         tooltip: 'Must hold an Adam Ape NFT',
         title: 'Phase I',
-        subtitle: 'Adam Ape NFT holdrs',
+        subtitle: 'Adam Ape NFT holders',
         description: '',
         allowlist: {
           gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
