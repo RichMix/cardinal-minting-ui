@@ -44,6 +44,7 @@ export type ProjectConfig = {
     icon: IconKey
     link: string
   }[]
+  goLiveSeconds?: number
   tradeButtons?: TradeButtonOptions[]
   logoImage?: string
   logoPadding?: boolean
@@ -82,6 +83,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     tradeButtons: ['coralcube'],
     mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
     candyMachineId: '8P1UPnxU1rPKTmMEbneQ2VQW99uLPxboP3QWkgQfuagV',
+    goLiveSeconds: 1668099600,
     phases: [
       {
         tooltip: 'Must hold an Adam Ape NFT',
@@ -164,6 +166,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     tradeButtons: ['coralcube'],
     mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
     candyMachineId: '8P1UPnxU1rPKTmMEbneQ2VQW99uLPxboP3QWkgQfuagV',
+    goLiveSeconds: 1668099600,
     phases: [
       {
         tooltip: 'Must hold an Adam Ape NFT',

@@ -5,6 +5,7 @@ import { useCandyMachineData } from 'hooks/useCandyMachineData'
 import { isValid, useGatewayToken } from 'hooks/useGatewayToken'
 import { useWalletId } from 'hooks/useWalletId'
 import { useProjectConfig } from 'providers/ProjectConfigProvider'
+import { useUTCNow } from 'providers/UTCNowProvider'
 
 export const MintButton = () => {
   const handleMint = useHandleMint()
@@ -14,11 +15,12 @@ export const MintButton = () => {
   const gatewayToken = useGatewayToken(
     candyMachineData.data?.data.gatekeeper?.gatekeeperNetwork
   )
+  const { UTCNow } = useUTCNow()
   const disabled =
     !candyMachineData.data ||
     !walletId ||
-    (!!candyMachineData.data?.data.gatekeeper && !isValid(gatewayToken.data))
-
+    (!!candyMachineData.data?.data.gatekeeper && !isValid(gatewayToken.data)) ||
+    (!!config.goLiveSeconds && UTCNow < (config.goLiveSeconds ?? 0))
   return (
     <Tooltip
       className="w-full cursor-pointer"
