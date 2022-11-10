@@ -11,6 +11,7 @@ import { useUTCNow } from 'providers/UTCNowProvider'
 export const MintButton = () => {
   const handleMint = useHandleMint()
   const { config } = useProjectConfig()
+
   const walletId = useWalletId()
   const candyMachineData = useCandyMachineData()
   const gatewayToken = useGatewayToken(
@@ -19,7 +20,19 @@ export const MintButton = () => {
   const whitelistMint = candyMachineData.data?.data.whitelistMintSettings?.mint
   const whitelistTokenAccount = useWhitelistTokenAccount(whitelistMint)
   const { UTCNow } = useUTCNow()
+  const activePhase = config.phases?.find(
+    (p) =>
+      UTCNow > (p.goLiveSeconds ?? 0) &&
+      (p.endSeconds === 0 || UTCNow < (p.endSeconds ?? 0)) &&
+      (!p.payment?.paymentMint ||
+        p.payment?.paymentMint ===
+          candyMachineData.data?.tokenMint?.toString()) &&
+      (!p.payment?.paymentAmount ||
+        (p.payment?.paymentAmount ?? 0) ===
+          parseInt(candyMachineData.data?.data.price.toString() ?? '0'))
+  )
   const disabled =
+    !activePhase ||
     !candyMachineData.data ||
     !walletId ||
     (!!candyMachineData.data?.data.gatekeeper && !isValid(gatewayToken.data)) ||
