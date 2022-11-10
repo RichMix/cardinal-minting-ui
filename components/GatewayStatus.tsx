@@ -9,9 +9,9 @@ import { AiOutlineCheck, AiOutlineClose, AiOutlineLock } from 'react-icons/ai'
 export const GatewayStatus = ({ phase }: { phase: Phase }) => {
   const walletId = useWalletId()
   const candyMachineData = useCandyMachineData()
-  const gatekeeperNetwork =
-    tryPublicKey(phase.allowlist?.gatekeeperNetwork) ??
-    candyMachineData.data?.data.gatekeeper?.gatekeeperNetwork
+  const gatekeeperNetwork = phase.allowlist
+    ? tryPublicKey(phase.allowlist?.gatekeeperNetwork)
+    : candyMachineData.data?.data.gatekeeper?.gatekeeperNetwork
   const gatewayToken = useGatewayToken(gatekeeperNetwork)
   if (!gatekeeperNetwork || !walletId) return <></>
   return (

@@ -19,8 +19,11 @@ export type Phase = {
   subtitle: React.ReactNode
   description: React.ReactNode
   allowlist?: {
-    gatekeeperNetwork: string
+    gatekeeperNetwork?: string
     expireOnUse?: boolean
+  }
+  whitelistMintSettings?: {
+    mint?: string
   }
   payment?: {
     paymentMint?: string
@@ -177,7 +180,6 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     tradeButtons: ['coralcube'],
     mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
     candyMachineId: 'B9MLpsMTTVpZBpWSFnbYrW9CV2oPsWq9kp8xjXtZXUQt',
-    hideElligibility: true,
     goLiveSeconds: 1668099600,
     phases: [
       {
@@ -188,6 +190,9 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
         allowlist: {
           gatekeeperNetwork: 'GnBuHefsQasF2spzZNkqQGN6AstFo9VEtrmmVPsbN6d3',
           expireOnUse: true,
+        },
+        whitelistMintSettings: {
+          mint: '7fpz2iSx5PaLkppg4pQwp3C6XfpmaeYpFcoXnuoEZQ7H',
         },
         payment: {
           paymentAmount: 3000000000,
@@ -204,6 +209,9 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
           gatekeeperNetwork: 'B21AQApRrSw9RrYLDdBC7RighbGY1CAsm2pRxczBPcNu',
           expireOnUse: true,
         },
+        whitelistMintSettings: {
+          mint: '7fpz2iSx5PaLkppg4pQwp3C6XfpmaeYpFcoXnuoEZQ7H',
+        },
         payment: {
           paymentMint: 'EPeUFDgHRxs9xxEPVaL6kfGQvCon7jmAWKVUHuux1Tpz',
           paymentAmount: 20000000000,
@@ -219,6 +227,9 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
           gatekeeperNetwork: 'B21AQApRrSw9RrYLDdBC7RighbGY1CAsm2pRxczBPcNu',
           expireOnUse: true,
         },
+        whitelistMintSettings: {
+          mint: '7fpz2iSx5PaLkppg4pQwp3C6XfpmaeYpFcoXnuoEZQ7H',
+        },
         payment: {
           paymentAmount: 3000000000,
         },
@@ -229,6 +240,8 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
         title: 'Phase IV',
         subtitle: 'Public SOL Mint',
         description: '',
+        allowlist: {},
+        whitelistMintSettings: {},
         payment: {
           paymentAmount: 3000000000,
         },

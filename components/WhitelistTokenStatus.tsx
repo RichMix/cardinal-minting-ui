@@ -1,16 +1,20 @@
+import { tryPublicKey } from '@cardinal/common'
 import { Tooltip } from 'common/Tooltip'
+import type { Phase } from 'config/config'
 import { useCandyMachineData } from 'hooks/useCandyMachineData'
 import { useWalletId } from 'hooks/useWalletId'
 import { useWhitelistTokenAccount } from 'hooks/useWhitelistTokenAccount'
 import { AiOutlineCheck, AiOutlineLock } from 'react-icons/ai'
 
-export const WhitelistTokenStatus = () => {
+export const WhitelistTokenStatus = ({ phase }: { phase: Phase }) => {
   const candyMachineData = useCandyMachineData()
   const walletId = useWalletId()
-  const whitelistTokenAccount = useWhitelistTokenAccount()
+  const whitelistMint = phase.whitelistMintSettings
+    ? tryPublicKey(phase.whitelistMintSettings?.mint)
+    : candyMachineData.data?.data.whitelistMintSettings?.mint
+  const whitelistTokenAccount = useWhitelistTokenAccount(whitelistMint)
   const amount = whitelistTokenAccount.data?.amount.toNumber().toString()
-  if (!candyMachineData.data?.data.whitelistMintSettings || !walletId)
-    return <></>
+  if (!whitelistMint || !walletId) return <></>
   return (
     <div className="flex">
       {!whitelistTokenAccount.isFetched ? (

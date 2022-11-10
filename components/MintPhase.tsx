@@ -107,7 +107,7 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
           {!config.hideElligibility && (
             <>
               <GatewayStatus phase={phase} />
-              <WhitelistTokenStatus />
+              <WhitelistTokenStatus phase={phase} />
             </>
           )}
           <Tooltip

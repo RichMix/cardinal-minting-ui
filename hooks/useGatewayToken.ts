@@ -8,7 +8,9 @@ import { useEnvironmentCtx } from 'providers/EnvironmentProvider'
 
 import { useWalletId } from './useWalletId'
 
-export const useGatewayToken = (gatekeeperNetwork: PublicKey | undefined) => {
+export const useGatewayToken = (
+  gatekeeperNetwork: PublicKey | null | undefined
+) => {
   const walletId = useWalletId()
   const { connection } = useEnvironmentCtx()
   return useQuery(
