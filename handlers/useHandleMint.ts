@@ -256,8 +256,8 @@ export const useHandleMint = () => {
       onError: (e: any) => {
         console.log(e, 'logs' in e ? e.logs : [])
         notify({
-          message: `Something went wrong with buying the token. Please try again`,
-          // description: `${e}`,
+          message: `Something went wrong with buying the token`,
+          description: `Please check your balance and try again`,
           type: 'error',
         })
       },
