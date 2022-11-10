@@ -84,7 +84,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     tradeButtons: ['coralcube'],
     mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
     candyMachineId: 'B9MLpsMTTVpZBpWSFnbYrW9CV2oPsWq9kp8xjXtZXUQt',
-    goLiveSeconds: 1668099600,
+    goLiveSeconds: 1668094200,
     phases: [
       {
         tooltip: 'Free Premint',
