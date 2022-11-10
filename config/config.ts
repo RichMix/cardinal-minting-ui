@@ -195,6 +195,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
           mint: '7fpz2iSx5PaLkppg4pQwp3C6XfpmaeYpFcoXnuoEZQ7H',
         },
         payment: {
+          paymentMint: 'So11111111111111111111111111111111111111112',
           paymentAmount: 3000000000,
         },
         goLiveSeconds: 1668099600,
@@ -231,6 +232,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
           mint: '7fpz2iSx5PaLkppg4pQwp3C6XfpmaeYpFcoXnuoEZQ7H',
         },
         payment: {
+          paymentMint: 'So11111111111111111111111111111111111111112',
           paymentAmount: 3000000000,
         },
         goLiveSeconds: 1668099600 + 60 * 60,
@@ -243,6 +245,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
         allowlist: {},
         whitelistMintSettings: {},
         payment: {
+          paymentMint: 'So11111111111111111111111111111111111111112',
           paymentAmount: 3000000000,
         },
         goLiveSeconds: 1668099600 + 60 * 120,
