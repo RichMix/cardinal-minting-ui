@@ -10,7 +10,7 @@ export function Placeholder() {
 
 function Home() {
   return (
-    <div className="relative z-0 min-h-screen bg-dark-5 flex flex-col">
+    <div className="relative z-0 flex min-h-screen flex-col bg-dark-5">
       <Head>
         <title>Minting UI</title>
         <meta name="description" content="Cardinal NFT Minting UI" />
@@ -31,7 +31,32 @@ function Home() {
         <meta name="twitter:site" content="@cardinal_labs" />
       </Head>
       <MainHero />
-      <div className="z-10 mx-auto mt-48 flex flex-col grow gap-16 px-8 md:px-16"></div>
+      <div className="z-10 mx-auto mt-48 flex grow flex-col gap-24 px-8 md:px-16">
+        <div className="flex w-full flex-col text-center">
+          <div className="mb-2 text-3xl text-light-0">Step 1</div>
+          <div className="text-lg text-medium-3">Start your mint</div>
+          <div className="mb-4 text-base italic text-medium-3">
+            Coming soon...
+          </div>
+        </div>
+        <div className="mx-auto h-48 w-[2px] bg-border"></div>
+        <div className="flex w-full flex-col text-center">
+          <div className="mb-2 text-3xl text-light-0">Step 2</div>
+          <div className="text-lg text-medium-3">Add your paramaters</div>
+          <div className="mb-4 text-base italic text-medium-3">
+            Coming soon...
+          </div>
+        </div>
+        <div className="mx-auto h-48 w-[2px] bg-border"></div>
+        <div className="flex w-full flex-col text-center">
+          <div className="mb-2 text-3xl text-light-0">Step 3</div>
+          <div className="text-lg text-medium-3">Share your page</div>
+          <div className="mb-4 text-base italic text-medium-3">
+            Coming soon...
+          </div>
+        </div>
+        <div className="mx-auto h-48 w-[2px] bg-border"></div>
+      </div>
       <FooterSlim />
     </div>
   )
