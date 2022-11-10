@@ -108,15 +108,13 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
             </div>
           </Tooltip>
         </div>
-        {paymentAmount && (
-          <div className="text-base font-bold">
-            {decimalAmount(
-              new BN(paymentAmount),
-              mintDecimals(paymentMint ?? new PublicKey(WRAPPED_SOL_MINT))
-            ).toFixed(2)}{' '}
-            {mintSymbol(paymentMint ?? new PublicKey(WRAPPED_SOL_MINT))}
-          </div>
-        )}
+        <div className="text-base font-bold">
+          {decimalAmount(
+            new BN(paymentAmount ?? 0),
+            mintDecimals(paymentMint ?? new PublicKey(WRAPPED_SOL_MINT))
+          ).toFixed(2)}{' '}
+          {mintSymbol(paymentMint ?? new PublicKey(WRAPPED_SOL_MINT))}
+        </div>
       </div>
     </div>
   )
