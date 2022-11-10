@@ -50,6 +50,7 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
 
   const live =
     UTCNow > (goLiveSeconds ?? 0) &&
+    (endSeconds === 0 || UTCNow < (endSeconds ?? 0)) &&
     (!phase.payment?.paymentMint ||
       phase.payment?.paymentMint ===
         candyMachineData.data?.tokenMint?.toString()) &&
@@ -92,6 +93,8 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
                 showZeros: true,
                 capitalizeSuffix: false,
               })
+            ) : endSeconds === 0 ? (
+              <div></div>
             ) : (
               <div className="h-[26px] w-16 animate-pulse rounded-lg bg-border" />
             )}

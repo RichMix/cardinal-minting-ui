@@ -1,6 +1,6 @@
 import type { Connection } from '@solana/web3.js'
-import type { ReactChild} from 'react';
-import React, { useContext, useEffect, useMemo , useState } from 'react'
+import type { ReactChild } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 
 import { useEnvironmentCtx } from './EnvironmentProvider'
 
