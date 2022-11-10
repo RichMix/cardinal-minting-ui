@@ -4,6 +4,7 @@ import { useHandleMint } from 'handlers/useHandleMint'
 import { useCandyMachineData } from 'hooks/useCandyMachineData'
 import { isValid, useGatewayToken } from 'hooks/useGatewayToken'
 import { useWalletId } from 'hooks/useWalletId'
+import { useWhitelistTokenAccount } from 'hooks/useWhitelistTokenAccount'
 import { useProjectConfig } from 'providers/ProjectConfigProvider'
 import { useUTCNow } from 'providers/UTCNowProvider'
 
@@ -15,17 +16,22 @@ export const MintButton = () => {
   const gatewayToken = useGatewayToken(
     candyMachineData.data?.data.gatekeeper?.gatekeeperNetwork
   )
+  const whitelistTokenAccount = useWhitelistTokenAccount()
   const { UTCNow } = useUTCNow()
   const disabled =
     !candyMachineData.data ||
     !walletId ||
     (!!candyMachineData.data?.data.gatekeeper && !isValid(gatewayToken.data)) ||
+    (!!candyMachineData.data?.data.whitelistMintSettings &&
+      (whitelistTokenAccount.data?.amount.toNumber() ?? 0) <= 0) ||
     (!!config.goLiveSeconds && UTCNow < (config.goLiveSeconds ?? 0))
   return (
     <Tooltip
       className="w-full cursor-pointer"
       tooltip={
-        disabled ? 'Wallet not elligible to mint during phase' : 'Mint 1 token'
+        disabled
+          ? 'Wallet not elligible to mint during phase. Check whitelist.'
+          : 'Mint 1 token'
       }
     >
       <Button

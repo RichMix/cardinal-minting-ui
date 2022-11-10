@@ -69,11 +69,11 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     socialLinks: [
       {
         icon: 'web',
-        link: 'https://brave.com/',
+        link: 'https://basicattentiontoken.org/',
       },
       {
         icon: 'twitter',
-        link: 'https://brave.com/',
+        link: 'https://twitter.com/AttentionToken',
       },
     ],
     colors: {
@@ -89,7 +89,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
       {
         tooltip: 'Must hold an Adam Ape NFT',
         title: 'Phase I',
-        subtitle: 'Adam Ape NFT holdrs',
+        subtitle: 'Adam Ape NFT holders',
         description: '',
         allowlist: {
           gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
@@ -151,11 +151,11 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     socialLinks: [
       {
         icon: 'web',
-        link: 'https://brave.com/',
+        link: 'https://basicattentiontoken.org/',
       },
       {
         icon: 'twitter',
-        link: 'https://brave.com/',
+        link: 'https://twitter.com/AttentionToken',
       },
     ],
     colors: {
@@ -172,7 +172,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
       {
         tooltip: 'Must hold an Adam Ape NFT',
         title: 'Phase I',
-        subtitle: 'Adam Ape NFT holdrs',
+        subtitle: 'Adam Ape NFT holders',
         description: '',
         allowlist: {
           gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
