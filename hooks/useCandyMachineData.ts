@@ -16,6 +16,7 @@ export const useCandyMachineData = () => {
     },
     {
       enabled: !!candyMachineId,
+      refetchInterval: 4000,
     }
   )
 }

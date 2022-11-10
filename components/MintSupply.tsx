@@ -28,6 +28,9 @@ export const MintSupply = () => {
           <div className="h-2/3 w-8 animate-pulse rounded-lg bg-border"></div>
         )}
       </div>
+      <div className="absolute right-5 flex h-full items-center text-sm">
+        <div className="h-2 w-2 animate-ping rounded-full bg-light-0" />
+      </div>
     </div>
   )
 }
