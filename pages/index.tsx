@@ -29,6 +29,11 @@ function Home() {
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@cardinal_labs" />
+        <script
+          defer
+          data-domain="mint.cardinal.so"
+          src="https://plausible.io/js/script.js"
+        ></script>
       </Head>
       <MainHero />
       <div className="z-10 mx-auto mt-48 flex grow flex-col gap-24 px-8 md:px-16">
