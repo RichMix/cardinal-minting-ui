@@ -247,6 +247,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
           paymentAmount: 3000000000,
         },
         goLiveSeconds: 1668099600 + 60 * 120,
+        endSeconds: 0,
       },
     ],
   },
