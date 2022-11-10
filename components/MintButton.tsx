@@ -34,6 +34,8 @@ export const MintButton = () => {
   const disabled =
     !activePhase ||
     !candyMachineData.data ||
+    candyMachineData.data.itemsRedeemed.toString() ===
+      candyMachineData.data.data.maxSupply.toString() ||
     !walletId ||
     (!!candyMachineData.data?.data.gatekeeper && !isValid(gatewayToken.data)) ||
     (!!candyMachineData.data?.data.whitelistMintSettings &&
