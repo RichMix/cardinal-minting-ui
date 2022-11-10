@@ -16,7 +16,8 @@ export const MintButton = () => {
   const gatewayToken = useGatewayToken(
     candyMachineData.data?.data.gatekeeper?.gatekeeperNetwork
   )
-  const whitelistTokenAccount = useWhitelistTokenAccount()
+  const whitelistMint = candyMachineData.data?.data.whitelistMintSettings?.mint
+  const whitelistTokenAccount = useWhitelistTokenAccount(whitelistMint)
   const { UTCNow } = useUTCNow()
   const disabled =
     !candyMachineData.data ||
