@@ -60,8 +60,8 @@ export type ProjectConfig = {
 export const LISTING_AUTHORITY_NAME = 'global'
 
 export const projectConfigs: { [key: string]: ProjectConfig } = {
-  'bat-test-0': {
-    name: 'bat-test-0',
+  'bat-premint': {
+    name: 'bat-premint',
     displayName: 'BAT x Adam Ape for Brave',
     description: `Basic Attention Token (BAT) has joined forces with Adam Ape, a renowned multidisciplinary artist in Web3 and the traditional graphic design and digital animation space, on its 2500-piece genesis Solana NFT collection: BAT x Adam Ape for Brave.\n\nTogether, they created four PFP-style NFTs modeled after Brave’s logo. Each of the four NFTs—The Curious, The Dabbler, The Degen, and The Sage—is dynamically animated with facial expressions and sound effects and represents one of four stages of immersion in Web3.`,
     // logoImage: 'brave/brave-logo.png',
@@ -83,16 +83,26 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     sponsors: ['/logos/bat.png', '/logos/brave.png', '/logos/magic-eden.png'],
     tradeButtons: ['coralcube'],
     mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
-    candyMachineId: '7MbKP4kNSSboUXqBYT6XtyrGnxQWW3u1BLRJxmbSu2HY',
+    candyMachineId: 'B9MLpsMTTVpZBpWSFnbYrW9CV2oPsWq9kp8xjXtZXUQt',
     goLiveSeconds: 1668099600,
     phases: [
+      {
+        tooltip: 'Free Premint',
+        title: 'Phase 0',
+        subtitle: 'Premint',
+        description: '',
+        allowlist: {
+          gatekeeperNetwork: '5yLQFwUm1NStXzhveYX3KNw2sJr5BAdQmrg1UbbB1nmi',
+          expireOnUse: true,
+        },
+      },
       {
         tooltip: 'Must hold an Adam Ape NFT',
         title: 'Phase I',
         subtitle: 'Adam Ape NFT holders',
         description: '',
         allowlist: {
-          gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
+          gatekeeperNetwork: 'GnBuHefsQasF2spzZNkqQGN6AstFo9VEtrmmVPsbN6d3',
           expireOnUse: true,
         },
         payment: {
@@ -107,7 +117,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
         subtitle: 'Whitelist BAT Mint',
         description: '',
         allowlist: {
-          gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
+          gatekeeperNetwork: 'B21AQApRrSw9RrYLDdBC7RighbGY1CAsm2pRxczBPcNu',
           expireOnUse: true,
         },
         payment: {
@@ -122,7 +132,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
         subtitle: 'Whitelist SOL Mint',
         description: '',
         allowlist: {
-          gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
+          gatekeeperNetwork: 'B21AQApRrSw9RrYLDdBC7RighbGY1CAsm2pRxczBPcNu',
           expireOnUse: true,
         },
         payment: {
