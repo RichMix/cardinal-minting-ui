@@ -47,12 +47,20 @@ export const MintPhase = ({ phase }: { phase: Phase }) => {
 
   const paymentMint =
     tryPublicKey(phase.payment?.paymentMint) ?? candyMachineData.data?.tokenMint
+
+  const live =
+    UTCNow > (goLiveSeconds ?? 0) &&
+    (!phase.payment?.paymentMint ||
+      phase.payment?.paymentMint ===
+        candyMachineData.data?.tokenMint?.toString()) &&
+    (!phase.payment?.paymentAmount ||
+      (phase.payment?.paymentAmount ?? 0) ===
+        parseInt(candyMachineData.data?.data.price.toString() ?? '0'))
+
   return (
     <div
       className={`w-full cursor-pointer rounded-lg border-opacity-50 bg-light-4 bg-opacity-10 px-6 py-4 text-sm ${
-        UTCNow > (goLiveSeconds ?? 0)
-          ? 'border-2 border-primary'
-          : 'border border-border opacity-50'
+        live ? 'border-2 border-primary' : 'border border-border opacity-50'
       }`}
     >
       <div className="mb-2 flex justify-between">
