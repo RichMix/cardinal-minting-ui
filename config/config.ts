@@ -165,7 +165,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     sponsors: ['/logos/bat.png', '/logos/brave.png', '/logos/magic-eden.png'],
     tradeButtons: ['coralcube'],
     mintImages: ['brave/brave-0.png', 'brave/brave-1.png', 'brave/brave-2.png'],
-    candyMachineId: '8P1UPnxU1rPKTmMEbneQ2VQW99uLPxboP3QWkgQfuagV',
+    candyMachineId: 'B9MLpsMTTVpZBpWSFnbYrW9CV2oPsWq9kp8xjXtZXUQt',
     hideElligibility: true,
     goLiveSeconds: 1668099600,
     phases: [
@@ -175,7 +175,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
         subtitle: 'Adam Ape NFT holders',
         description: '',
         allowlist: {
-          gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
+          gatekeeperNetwork: 'GnBuHefsQasF2spzZNkqQGN6AstFo9VEtrmmVPsbN6d3',
           expireOnUse: true,
         },
         payment: {
@@ -190,7 +190,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
         subtitle: 'Whitelist BAT Mint',
         description: '',
         allowlist: {
-          gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
+          gatekeeperNetwork: 'B21AQApRrSw9RrYLDdBC7RighbGY1CAsm2pRxczBPcNu',
           expireOnUse: true,
         },
         payment: {
@@ -205,7 +205,7 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
         subtitle: 'Whitelist SOL Mint',
         description: '',
         allowlist: {
-          gatekeeperNetwork: '6MSNwwsuHzv76oXhdx2PGZXyZtB7SzCEof9vKksTMZpE',
+          gatekeeperNetwork: 'B21AQApRrSw9RrYLDdBC7RighbGY1CAsm2pRxczBPcNu',
           expireOnUse: true,
         },
         payment: {
@@ -260,15 +260,11 @@ export const projectConfigs: { [key: string]: ProjectConfig } = {
     socialLinks: [
       {
         icon: 'web',
-        link: 'https://solanamonkey.business/',
+        link: 'https://cardinal.so/',
       },
       {
         icon: 'twitter',
-        link: 'https://twitter.com/SolanaMBS',
-      },
-      {
-        icon: 'discord',
-        link: 'https://discord.com/invite/solanamonkeybusiness',
+        link: 'https://twitter.com/cardinal_labs',
       },
     ],
     colors: {
